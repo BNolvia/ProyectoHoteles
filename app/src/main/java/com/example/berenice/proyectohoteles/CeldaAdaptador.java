@@ -1,6 +1,7 @@
 package com.example.berenice.proyectohoteles;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,9 +61,18 @@ public class CeldaAdaptador  extends ArrayAdapter<JSONObject> {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        celda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), DetalleAcivity.class);
+                intent.putExtra("hotel", getItem(position).toString());
+                getContext().startActivity(intent);
+            }
+        });
 
 
         return celda;
     }
-}
+
+
+        }
